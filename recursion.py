@@ -31,17 +31,19 @@ def sum_list(l):
 
 # Reverse a list without slicing or loops
 def reverse(l):
-    if len(l) == 0 or len(l) == 1:
+    if l == []:
         return l
     else:
-        new_last = l.pop()
-        new_first = l.pop(0)
-        return reverse(l) append(new_last)
+        popped = [l.pop(0)]
+        return reverse(l) + popped
 
 # Fibonacci returns the nth fibonacci number. The nth fibonacci number is
 # defined as fib(n) = fib(n-1) + fib(n-2)
 def fibonacci(n):
-    pass
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return fibonacci(n-2) + fibonacci(n-1)
 
 # Finds the item i in the list l.... RECURSIVELY
 def find(l, i):
@@ -61,4 +63,4 @@ def count_up(target, n):
     return
 
 list = [1,2,3,4]
-print sum_list(list)
+print fibonacci(40)
