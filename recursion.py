@@ -15,13 +15,13 @@ def factorial(n):
 
 # Count the number of elements in the list l
 def count_list(l):
-    if list == []:
+    if l == []:
         return 0
     else:
         l.pop(0)
         return count_list(l) + 1
 
-# Sum all of the elements in a list
+# Sum all of the elements in a listlist
 def sum_list(l):
     if len(l) == 1:
         return l[0]
@@ -57,16 +57,24 @@ def find(l, i):
         return find(l, i)
 
 # Determines if a string is a palindrome
-def palindrome(some_string):
-    char_list = list(some_string)
-    if len(char_list) == 1 or len(char_list) == 0:
-        return True
-    elif char_list[0] != char_list[-1]:
-        return False
-    char_list.pop()
-    char_list.pop(-1)
-    return palindrome(char_list)
+# def palindrome(some_string):
+#     char_list = list(some_string)
+#     if len(char_list) == 1 or len(char_list) == 0:
+#         return True
+#     elif char_list[0] != char_list[-1]:
+#         return False
+#     char_list.pop()
+#     char_list.pop(0)
+#     return palindrome(char_list)
     
+def palindrome(some_string):
+    if len(some_string) == 0 or len(some_string) == 1:
+        return True
+    elif some_string[0] != some_string[-1]:
+        return False
+    else:
+        return palindrome(some_string[1:-1])
+
 
 # Given the width and height of a sheet of paper, and the number of times to fold it, 
 # return the final dimensions of the sheet as a tuple. Assume that you always fold 
@@ -75,11 +83,11 @@ def fold_paper(width, height, folds):
     if folds == 0:
         return (width, height)
     elif width > height:
-        new_width = width/2
+        new_width = float(width)/2
         num_folds = folds - 1
         return fold_paper(new_width, height, num_folds)
-    elif height > width:
-        new_height = height/2
+    else:
+        new_height = float(height)/2
         num_folds = folds - 1
         return fold_paper(width, new_height, num_folds)
 
@@ -94,4 +102,9 @@ def fold_paper(width, height, folds):
 # Note #2: We're printing out the numbers, so this script does not 
 #          need to return anything!
 def count_up(target, n):
-    return
+    if n == target:
+        print target
+    else:
+        print n
+        n += 1
+        count_up(target, n)
