@@ -45,10 +45,16 @@ def fibonacci(n):
     else:
         return fibonacci(n-2) + fibonacci(n-1)
 
-# TODO
 # Finds the item i in the list l.... RECURSIVELY
+# Return the item if it is in the list or None if not found
 def find(l, i):
-    return 
+    if l == []:
+        return None
+    elif l[-1] == i:
+        return i
+    else:
+        l = l[0:-1]
+        return find(l, i)
 
 # Determines if a string is a palindrome
 def palindrome(some_string):
@@ -66,9 +72,26 @@ def palindrome(some_string):
 # return the final dimensions of the sheet as a tuple. Assume that you always fold 
 # in half along the longest edge of the sheet.
 def fold_paper(width, height, folds):
-    return (0, 0)
+    if folds == 0:
+        return (width, height)
+    elif width > height:
+        new_width = width/2
+        num_folds = folds - 1
+        return fold_paper(new_width, height, num_folds)
+    elif height > width:
+        new_height = height/2
+        num_folds = folds - 1
+        return fold_paper(width, new_height, num_folds)
 
 # Count up
 # Print all the numbers from 0 to target
+# Use n to keep track of where you're at
+# ex, to count from 1 - 100, call count_up(100, 1)
+#
+# Note: we don't have a test case for this one, so just run this
+#       script directly
+#
+# Note #2: We're printing out the numbers, so this script does not 
+#          need to return anything!
 def count_up(target, n):
     return
